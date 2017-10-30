@@ -1,6 +1,6 @@
 # Constantine
 
-Constantine is an open-source multifunctional [Discord](https://discordapp.com/) Bot written in python.
+Constantine is an open-source multifunctional [Discord](https://discordapp.com/) Bot written in [Python](https://www.python.org/).
 
   - Music Player (Planned)
   - ToDo List and Reminders (Planned)
@@ -17,7 +17,7 @@ Constantine uses the following libaries and APIs:
 
 ### Installation
 
-Clone this repository using 
+Clone [this repository](https://github.com/frereit/constantine-bot) using 
 ```
 git clone https://github.com/frereit/constantine-bot.git
 cd constantine-bot
@@ -26,6 +26,7 @@ Install required libaries:
 ```
 pip install -r requirements.txt
 ```
+Create a new [Discord App](https://discordapp.com/developers/applications/me/create) and create a Bot User.
 
 Configure your Client ID, Client Secret, Username (NOT your discord username, the username of the bot!) and Token using your favourite text editor in config.json.
 
