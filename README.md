@@ -13,7 +13,8 @@ Constantine is an open-source multifunctional [Discord](https://discordapp.com/)
 ### Tech
 
 Constantine uses the following libaries and APIs:
->None yet, project not started
+  - [pipreqs](https://github.com/bndr/pipreqs) - Quickly creating requirements.txt files for specific projects.
+  - [Discord.py](https://github.com/Rapptz/discord.py) - Discord API Wrapper for Python
 
 ### Installation
 
