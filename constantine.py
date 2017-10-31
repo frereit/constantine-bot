@@ -1,6 +1,7 @@
-#import discord
-from discord.ext import commands
+import discord
 import json
+from handler import CommandHandler
+
 
 with open('config.json') as data_file:
     config = json.load(data_file)
@@ -8,22 +9,24 @@ with open('config.json') as data_file:
 description = config['description']
 prefix = config['prefix']
 token = config['token']
+client = discord.Client()
+handler = CommandHandler(prefix, client)
 
-'''There are a number of utility commands being showcased here.'''
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('!'), description=description)
 
-
-@bot.event
+@client.event
 async def on_ready():
     print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
+    print(client.user.name)
+    print(client.user.id)
     print('------')
 
 
-@bot.command()
-async def ping():
-    """Check if bot is active"""
-    await bot.say('Pong!')
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith(prefix):
+        await handler.handle(message)
 
-bot.run(token)
+
+client.run(token)
