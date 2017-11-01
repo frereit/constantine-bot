@@ -11,7 +11,8 @@ class CommandHandler:
     commandlist = [
         Ping() ,
         Say() ,
-        Translate()
+        Translate() ,
+		HelloWorld()
     ]
 
     def __init__(self , prefix , client):
