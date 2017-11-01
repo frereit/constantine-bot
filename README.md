@@ -48,4 +48,4 @@ Feel free to fork the repository and request a pull request. If you plan on doin
 License
 ----
 
-[GNU General Public License v3.0](https://github.com/frereit/constantine-bot/blob/master/LICENSE)
+[GNU General Public License v3.0](https://github.com/frereit/constantine-bot/blob/develop/LICENSE)
