@@ -28,15 +28,12 @@ class Translate(Command):
     async def execute(self , client , message , args , **kwargs):
         # We need at least one argument
         if len(args) < 1:
-            await client.send_message(message.channel , content=self.get_wrong_usage())
-            return False  # These returns are not used, but they may be in the future and help to see if this is a
-            # "successful" end
+            return False  # Command failed. Handler will print usage.
 
         # If user wants to see available directions
         if args[0] == 'available':
             # We only need one argument here
             if not len(args) == 1:
-                await client.send_message(message.channel , content=self.get_wrong_usage())
                 return False  # Too many arguments
             else:
                 await client.send_message(message.channel , content="Available translate directions: \n```"
@@ -46,7 +43,6 @@ class Translate(Command):
         if args[0] == 'detect':
             # We only need two arguments here
             if not len(args) < 2:
-                await client.send_message(message.channel , content=self.get_wrong_usage())
                 return False  # Not enough arguments. REMEMBER: Each space counts as argument, thus we cant just say
                 # exactly two arguments
             args.pop(0)  # Pop 'detect' from argument list to only get the arguments for this sub command
