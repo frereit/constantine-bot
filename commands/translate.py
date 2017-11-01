@@ -1,4 +1,6 @@
 import json  # JSON De/Encoder
+
+import yandex_translate
 from yandex_translate import YandexTranslate  # API used for translation
 from category import Category  # Category enum with all the categories
 from commands.command import Command  # Base class
@@ -61,7 +63,15 @@ class Translate(Command):
         text = " ".join(args)
 
         # Translate it and get the text
-        translated = self.translate.translate(text=text , lang=lang)
+        try:
+            translated = self.translate.translate(text=text , lang=lang)
+        except yandex_translate.YandexTranslateException:
+            # Notify the user that his lang-code is invalid.
+            text = "Whoops! Seems like the language code you supplied is invalid! You can list all available language " \
+                   "codes with !translate available "
+            await client.send_message(message.channel, content=text)
+            return True  # We don't want it to print the syntax
+        
         translation = translated['text'][0]
 
         # Send the translation
