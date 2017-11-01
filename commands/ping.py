@@ -16,7 +16,6 @@ class Ping(Command):
     async def execute(self , client , message , args , **kwargs):
         # No arguments needed
         if len(args) != 0:
-            await client.send_message(message.channel, content=self.get_wrong_usage())
             return False  # Too many arguments, print syntax
         # Send back pong.
         await client.send_message(message.channel, content="Pong!")

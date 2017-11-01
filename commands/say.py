@@ -14,7 +14,6 @@ class Say(Command):
     async def execute(self , client , message , args , **kwargs):
         # We need text, thus at least 1 argument
         if len(args) == 0:
-            await client.send_message(message.channel , content=self.get_wrong_usage())
             return False  # No arguments, print syntax
 
         # Send back whatever the user inputs
