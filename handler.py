@@ -3,13 +3,15 @@ from discord import Embed
 from category import Category
 from commands.ping import Ping
 from commands.say import Say
+from commands.translate import Translate
 
 
 class CommandHandler:
     """CommandHandler is used to call the correct command and handle help"""
     commandlist = [
         Ping() ,
-        Say()
+        Say() ,
+        Translate()
     ]
 
     def __init__(self , prefix , client):

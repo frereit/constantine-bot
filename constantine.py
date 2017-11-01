@@ -8,7 +8,8 @@ with open('config.json') as data_file:
 
 
 prefix = config['prefix']
-token = config['token']
+token = config['discordtoken']
+key = config['yandexkey']
 client = discord.Client()
 handler = CommandHandler(prefix, client)
 
