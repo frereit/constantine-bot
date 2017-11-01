@@ -34,7 +34,7 @@ class CommandHandler:
         # Search for the command with the correct name, ignores case
         for command in self.commandlist:
             if message.content.startswith(self.prefix + command.name.lower()):
-                await command.execute(self.client , message , self.get_args(message.content) , )
+                await command.execute(self.client , message , self.get_args(message.content))
 
     # Arguments are parsed in the handler so that creating a new command is even easier (of courses we could just
     # parse in the __init__ of command.py but it both works.

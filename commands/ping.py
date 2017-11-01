@@ -14,8 +14,12 @@ class Ping(Command):
         super().__init__(self.name , self.shortdesc , self.longdesc , self.usage , self.category)
 
     async def execute(self , client , message , args , **kwargs):
+        # No arguments needed
         if len(args) != 0:
             await client.send_message(message.channel, content=self.get_wrong_usage())
             return False  # Too many arguments, print syntax
+        # Send back pong.
         await client.send_message(message.channel, content="Pong!")
         return True  # Command was run successfully
+# TODO: Add response time in ms. Basically count ms until we receive the message "Pong!" sent by the bot then edit
+#       the message. This might a little tricky since on_message is handled in constantine.py

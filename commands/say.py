@@ -12,8 +12,11 @@ class Say(Command):
         super().__init__(self.name , self.shortdescription , self.longdescription , self.usage , self.category)
 
     async def execute(self , client , message , args , **kwargs):
+        # We need text, thus at least 1 argument
         if len(args) == 0:
             await client.send_message(message.channel , content=self.get_wrong_usage())
             return False  # No arguments, print syntax
+
+        # Send back whatever the user inputs
         await client.send_message(message.channel , content=" ".join(args))
         return True  # Command was run successfully
