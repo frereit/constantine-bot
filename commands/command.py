@@ -8,11 +8,17 @@ class Command:
         self.usage = usage
         self.category = category
 
+    def get_name(self):
+        return self.name
+
     def getshortinfo(self):
         return self.name + " - " + self.shortdescription
 
     def getfullinfo(self):
-        return self.longdescription + "\n" + "Usage: " + self.usage + "\n" + "Category: " + self.category
+        return "\n```" + self.longdescription + "\n" + "Usage: " + self.usage + "\n" + "Category: " + self.category.name + "\n```"
+
+    def get_usage(self):
+        return self.usage
 
     def getcategory(self):
         return self.category

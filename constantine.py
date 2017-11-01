@@ -6,7 +6,7 @@ from handler import CommandHandler
 with open('config.json') as data_file:
     config = json.load(data_file)
 
-description = config['description']
+
 prefix = config['prefix']
 token = config['token']
 client = discord.Client()
