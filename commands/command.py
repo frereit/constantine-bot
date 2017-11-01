@@ -8,20 +8,11 @@ class Command:
         self.usage = usage
         self.category = category
 
-    def get_name(self):
-        return self.name
-
     def getshortinfo(self):
-        return self.name + " - " + self.shortdescription
+        return self.usage + " - " + self.shortdescription
 
-    def getfullinfo(self):
-        return "\n```" + self.longdescription + "\n" + "Usage: " + self.usage + "\n" + "Category: " + self.category.name + "\n```"
+    def get_wrong_usage(self):
+        return "Wrong usage! Usage: " + self.usage
 
-    def get_usage(self):
-        return self.usage
-
-    def getcategory(self):
-        return self.category
-
-    def execute(self, client, channel, args):
+    async def execute(self , client , message , args , **kwargs):
         pass

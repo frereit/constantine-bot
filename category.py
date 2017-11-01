@@ -2,4 +2,4 @@ from enum import Enum
 
 
 class Category(Enum):
-    CORE = 0
+    CORE = "Core"
