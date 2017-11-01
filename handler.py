@@ -14,7 +14,8 @@ class CommandHandler:
     commandlist = [
         Ping() ,
         Say() ,
-        Translate()
+        Translate() ,
+		HelloWorld()
     ]
 
     # Command Prefix and Client are passed on by constantine.py so that the commands can send messages
