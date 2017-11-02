@@ -1,8 +1,8 @@
 class Command:
     """All commands extend from this class, but the class should never be used as object"""
 
-    def __init__(self, name, shortdescription, longdescription, usage, category):
-        self.name = name
+    def __init__(self, aliases, shortdescription, longdescription, usage, category):
+        self.aliases = aliases
         self.shortdescription = shortdescription
         self.longdescription = longdescription
         self.usage = usage

@@ -5,13 +5,13 @@ from commands.command import Command
 class Ping(Command):
 
     def __init__(self):
-        self.name = "ping"
+        self.aliases = ["ping"]
         self.shortdesc = "Sends 'Pong' back"
         self.longdesc = "This command not only allows you to check if the bot is active, it also allows you to check " \
                         "response time. "
-        self.usage = self.name
+        self.usage = "/".join(self.aliases)
         self.category = Category.CORE
-        super().__init__(self.name , self.shortdesc , self.longdesc , self.usage , self.category)
+        super().__init__(self.aliases , self.shortdesc , self.longdesc , self.usage , self.category)
 
     async def execute(self , client , message , args , **kwargs):
         # No arguments needed

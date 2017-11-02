@@ -10,11 +10,11 @@ class Translate(Command):
     def __init__(self):
 
         # Information about the command
-        self.name = "translate"
+        self.aliases = ["translate", "alias2", "alias3"]
         self.shortdescription = "Quickly translate stuff"
         self.longdescription = "Translate a string into another language. The command uses the free Yandex Translate " \
                                "API: https://translate.yandex.com/. Works best with single words. "
-        self.usage = "!translate <detect|<lang (e.g. de-en)>|available> [text]"
+        self.usage = "/".join(self.aliases) + " <detect|<lang (e.g. de-en)>|available> [text]"
         self.category = Category.UTIL
 
         # Get the key from config.json
@@ -24,7 +24,7 @@ class Translate(Command):
 
         # Create new Translate instance
         self.translate = YandexTranslate(self.yandexkey)
-        super().__init__(self.name , self.shortdescription , self.longdescription , self.usage , self.category)
+        super().__init__(self.aliases , self.shortdescription , self.longdescription , self.usage , self.category)
 
     # Called by CommandHandler when the command is executed
     async def execute(self , client , message , args , **kwargs):
@@ -71,7 +71,7 @@ class Translate(Command):
                    "codes with !translate available "
             await client.send_message(message.channel, content=text)
             return True  # We don't want it to print the syntax
-        
+
         translation = translated['text'][0]
 
         # Send the translation

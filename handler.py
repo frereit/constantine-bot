@@ -33,7 +33,7 @@ class CommandHandler:
 
         # Search for the command with the correct name, ignores case
         for command in self.commandlist:
-            if message.content.startswith(self.prefix + command.name.lower()):
+            if self.is_alias(command, message.content):
                 if not await command.execute(self.client , message , self.get_args(message.content)):
                     await self.client.send_message(message.channel , content=command.get_wrong_usage())
 
@@ -44,6 +44,12 @@ class CommandHandler:
         args = message.split(" ")
         args.pop(0)
         return args
+
+    def is_alias(self, cmd, message):
+        for alias in cmd.aliases:
+            if message.lower().startswith(self.prefix + alias.lower()):
+                return True
+        return False
 
     # Help command, we should transform this to normal command with extra argument
     async def help(self , message , args):
@@ -74,19 +80,20 @@ class CommandHandler:
         # One argument was given => Give exact info about that command
         for cmd in self.commandlist:
             # If we found the command user is looking for (Ignores case)
-            if cmd.name.lower() == args[0].lower():
-                # Create embed Frame
-                embed = Embed(title=self.prefix + cmd.name , color=0xff8000)
-                embed.set_author(name="Constantine Help")
+            for alias in cmd.aliases:
+                if alias.lower() == args[0].lower():
+                    # Create embed Frame
+                    embed = Embed(title=self.prefix + "/".join(cmd.aliases) , color=0xff8000)
+                    embed.set_author(name="Constantine Help")
 
-                # Create 3 embed fields
-                embed.add_field(name="Description" , value=cmd.longdescription , inline=True)
-                embed.add_field(name="Usage" , value=cmd.usage , inline=True)
-                embed.add_field(name="Category" , value=cmd.category.value , inline=True)
+                    # Create 3 embed fields
+                    embed.add_field(name="Description" , value=cmd.longdescription , inline=True)
+                    embed.add_field(name="Usage" , value=cmd.usage , inline=True)
+                    embed.add_field(name="Category" , value=cmd.category.value , inline=True)
 
-                # Send the embed
-                await self.client.send_message(message.channel , embed=embed)
-                return
+                    # Send the embed
+                    await self.client.send_message(message.channel , embed=embed)
+                    return
 
         # No command with that name was found
         await self.client.send_message(message.channel , content="No command found named " + args[0])
