@@ -1,11 +1,8 @@
-from discord import Embed  # used to create tables (e.g !help)
-from category import Category  # Category Enum with all the different Categories
-
 # Import all commands
 from commands.ping import Ping
 from commands.say import Say
 from commands.translate import Translate
-from help import Help
+from commands.help import Help
 
 
 class CommandHandler:
