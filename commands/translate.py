@@ -10,7 +10,7 @@ class Translate(Command):
     def __init__(self):
 
         # Information about the command
-        self.aliases = ["translate", "alias2", "alias3"]
+        self.aliases = ["translate"]
         self.shortdescription = "Quickly translate stuff"
         self.longdescription = "Translate a string into another language. The command uses the free Yandex Translate " \
                                "API: https://translate.yandex.com/. Works best with single words. "
