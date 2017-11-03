@@ -1,4 +1,5 @@
 # Import all commands
+from commands.news import News
 from commands.ping import Ping
 from commands.say import Say
 from commands.translate import Translate
@@ -14,7 +15,8 @@ class CommandHandler:
         self.commandlist = [
             Ping() ,
             Say() ,
-            Translate()
+            Translate(),
+            News()
         ]
         self.prefix = prefix
         self.client = client
