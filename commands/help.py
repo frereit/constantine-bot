@@ -17,7 +17,6 @@ class Help(Command):
     async def execute(self , client , message , args , **kwargs):
         # Maximum amount of arguments is 1
         if len(args) > 1:
-            await client.send_message(message.channel , content="Wrong usage! Usage: !help [command]")
             return False
 
         # If no command was specified list all commands
