@@ -17,17 +17,22 @@ class News(Command):
         with open('config.json') as data_file:
             config = json.load(data_file)
         self.newskey = config['newskey']
-        self.sources = json.load(urllib.request.urlopen('https://newsapi.org/v1/sources?language=en'))  # Get all available news sources
+        self.sources = json.load(
+            urllib.request.urlopen('https://newsapi.org/v1/sources?language=en'))  # Get all available news sources
         super().__init__(self.aliases , self.shortdescription , self.longdescription , self.usage , self.category)
 
     def parse_time(self , unparsed):
-        # Example unparsed string: 2017-11-03T13:46:07Z
-        time = unparsed.split("T")[1][:-4]  # Get time and remove seconds
-        date = unparsed.split("T")[0]  # Get complete date
-        year = date.split("-")[0]
-        month = date.split("-")[1]
-        day = date.split("-")[2]
-        return time + " on " + day + "." + month + "." + year  # Example return: "13:46 on 03.11.2017"
+        try:
+            # Example unparsed string: 2017-11-03T13:46:07Z
+            time = unparsed.split("T")[1][:-4]  # Get time and remove seconds
+            date = unparsed.split("T")[0]  # Get complete date
+            year = date.split("-")[0]
+            month = date.split("-")[1]
+            day = date.split("-")[2]
+            return time + " on " + day + "." + month + "." + year  # Example return: "13:46 on 03.11.2017"
+        except AttributeError:
+            # Time was not available (for example on reddit-r-all)
+            return "<not available>"
 
     async def execute(self , client , message , args , **kwargs):
         # at most 2 arguments
@@ -46,7 +51,8 @@ class News(Command):
                         categories.append(source['category'])  # Search for categories
                 for category in categories:
                     category_text = ""  # For each category create a new field with this value
-                    for source in self.sources['sources']:  # Add every news source with this value to the category value
+                    for source in self.sources[
+                        'sources']:  # Add every news source with this value to the category value
                         if source['category'] == category:
                             category_text += source['id'] + "\n"
                     embed.add_field(name=category , value=category_text , inline=True)  # Add the category field
@@ -88,7 +94,7 @@ class News(Command):
                 news = json.load(urllib.request.urlopen(api_url))
                 # Create embed with no title, title is basically the author, but author looks nicer and we can use
                 # the favicon with that
-                embed = Embed(title="", color=0xff8000)
+                embed = Embed(title="" , color=0xff8000)
                 embed.set_author(name=source['name'] , url=source['url'] ,
                                  icon_url="https://s2.googleusercontent.com/s2/favicons?domain=" + source['url'])
                 for article in news['articles']:  # Add the articles as fields to the embed
