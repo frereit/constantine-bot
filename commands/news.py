@@ -67,8 +67,11 @@ class News(Command):
                 for source in self.sources['sources']:
                     if source['id'] == args[0]:  # User wanted info about this source
                         # Create embed
-                        embed = Embed(title=source['name'] , url=source['url'] , description=source['description'] ,
+                        embed = Embed(title="", description=source['description'] ,
                                       color=0xff8000)
+                        embed.set_author(name=source['name'] , url=source['url'] ,
+                                         icon_url="https://s2.googleusercontent.com/s2/favicons?domain=" + source[
+                                             'url'])
                         embed.add_field(name="Category" , value=source['category'] , inline=True)
                         embed.add_field(name="Language" , value=source['language'] , inline=True)
                         embed.add_field(name="ID" , value=source['id'] , inline=True)
