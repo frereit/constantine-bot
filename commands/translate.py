@@ -59,6 +59,9 @@ class Translate(Command):
         # Get language code and leave only text behind in args
         lang = args.pop(0)
 
+        if len(args) == 0:
+            return False
+
         # Join the arguments to text
         text = " ".join(args)
 
