@@ -8,7 +8,12 @@ Constantine is an open-source multifunctional [Discord](https://discordapp.com/)
 
 # Usage
 
->No commands are implemented yet
+>Core
+>!ping - Sends 'Pong' back
+>!say/send_message <Text> - Makes the bot say whatever you want.
+>!help [command] - Lists all commands.
+>Utilities
+>!translate/alias2/alias3 <detect|<lang (e.g. de-en)>|available> [text] - Quickly translate stuff
 
 ### Tech
 
