@@ -1,4 +1,5 @@
 # Import all commands
+from commands.crypto import Crypto
 from commands.math import Math
 from commands.news import News
 from commands.ping import Ping
@@ -20,6 +21,7 @@ class CommandHandler:
             Translate() ,
             HelloWorld(),
             News(),
+            Crypto(),
             Math()
         ]
         self.prefix = prefix
