@@ -5,14 +5,14 @@ from commands.command import Command
 
 class Help(Command):
     def __init__(self , commandlist, prefix):
-        self.aliases = ["help"]
-        self.shortdescription = "Lists all commands."
-        self.longdescription = "Get info about every command currently available with syntax and a description."
-        self.usage = "help [command]"
-        self.category = Category.CORE
+        aliases = ["help"]
+        shortdescription = "Lists all commands."
+        longdescription = "Get info about every command currently available with syntax and a description."
+        usage = "/".join(aliases) + " [command]"
+        category = Category.CORE
         self.commandlist = commandlist
         self.prefix = prefix
-        super().__init__(self.aliases , self.shortdescription , self.longdescription , self.usage , self.category)
+        super().__init__(aliases , shortdescription , longdescription , usage , category)
 
     async def execute(self , client , message , args , **kwargs):
         # Maximum amount of arguments is 1

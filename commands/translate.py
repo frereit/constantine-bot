@@ -10,12 +10,12 @@ class Translate(Command):
     def __init__(self):
 
         # Information about the command
-        self.aliases = ["translate"]
-        self.shortdescription = "Quickly translate stuff"
-        self.longdescription = "Translate a string into another language. The command uses the free Yandex Translate " \
-                               "API: https://translate.yandex.com/. Works best with single words. "
-        self.usage = "/".join(self.aliases) + " <detect|<lang (e.g. de-en)>|available> [text]"
-        self.category = Category.UTIL
+        aliases = ["translate"]
+        shortdescription = "Quickly translate stuff"
+        longdescription = "Translate a string into another language. The command uses the free Yandex Translate " \
+                          "API: https://translate.yandex.com/. Works best with single words. "
+        usage = "/".join(aliases) + " <detect|<lang (e.g. de-en)>|available> [text]"
+        category = Category.UTIL
 
         # Get the key from config.json
         with open('config.json') as data_file:
@@ -24,7 +24,7 @@ class Translate(Command):
 
         # Create new Translate instance
         self.translate = YandexTranslate(self.yandexkey)
-        super().__init__(self.aliases , self.shortdescription , self.longdescription , self.usage , self.category)
+        super().__init__(aliases , shortdescription , longdescription , usage , category)
 
     # Called by CommandHandler when the command is executed
     async def execute(self , client , message , args , **kwargs):
@@ -72,7 +72,7 @@ class Translate(Command):
             # Notify the user that his lang-code is invalid.
             text = "Whoops! Seems like the language code you supplied is invalid! You can list all available language " \
                    "codes with !translate available "
-            await client.send_message(message.channel, content=text)
+            await client.send_message(message.channel , content=text)
             return True  # We don't want it to print the syntax
 
         translation = translated['text'][0]
