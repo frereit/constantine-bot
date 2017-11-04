@@ -10,12 +10,12 @@ class Translate(Command):
     def __init__(self):
 
         # Information about the command
-        aliases = ["translate"]
-        shortdescription = "Quickly translate stuff"
-        longdescription = "Translate a string into another language. The command uses the free Yandex Translate " \
+        self.aliases = ["translate"]
+        self.shortdescription = "Quickly translate stuff"
+        self.longdescription = "Translate a string into another language. The command uses the free Yandex Translate " \
                                "API: https://translate.yandex.com/. Works best with single words. "
-        usage = "/".join(self.aliases) + " <detect|<lang (e.g. de-en)>|available> [text]"
-        category = Category.UTIL
+        self.usage = "/".join(self.aliases) + " <detect|<lang (e.g. de-en)>|available> [text]"
+        self.category = Category.UTIL
 
         # Get the key from config.json
         with open('config.json') as data_file:
@@ -24,7 +24,7 @@ class Translate(Command):
 
         # Create new Translate instance
         self.translate = YandexTranslate(self.yandexkey)
-        super().__init__(aliases , shortdescription , longdescription , usage , category)
+        super().__init__(self.aliases , self.shortdescription , self.longdescription , self.usage , self.category)
 
     # Called by CommandHandler when the command is executed
     async def execute(self , client , message , args , **kwargs):
