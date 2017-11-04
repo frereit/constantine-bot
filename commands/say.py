@@ -4,12 +4,12 @@ from commands.command import Command
 
 class Say(Command):
     def __init__(self):
-        aliases = ["say" , "send_message"]
-        shortdescription = "Makes the bot say whatever you want."
-        longdescription = "Makes the bot say whatever you want. Used to check if arguments are working."
-        usage = "/".join(self.aliases) + " <Text>"
-        category = Category.CORE
-        super().__init__(aliases , shortdescription , longdescription , usage , category)
+        self.aliases = ["say" , "send_message"]
+        self.shortdescription = "Makes the bot say whatever you want."
+        self.longdescription = "Makes the bot say whatever you want. Used to check if arguments are working."
+        self.usage = "/".join(self.aliases) + " <Text>"
+        self.category = Category.CORE
+        super().__init__(self.aliases , self.shortdescription , self.longdescription , self.usage , self.category)
 
     async def execute(self , client , message , args , **kwargs):
         # We need text, thus at least 1 argument
