@@ -104,3 +104,5 @@ ENV/
 *.xml
 .idea/vcs.xml
 config.json
+.idea/vcs.xml
+.idea/constantine-bot.iml

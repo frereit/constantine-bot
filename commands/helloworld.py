@@ -11,5 +11,6 @@ class HelloWorld(Command):
         self.category = Category.CORE
         super().__init__(self.aliases, self.shortdescription, self.longdescription, self.usage, self.category)
 
-        async def execute(self, client, message, args, **kwargs):
-            await client.send_messages(message.channel.content = "Hello World")
+    async def execute(self, client, message, args, **kwargs):
+        await client.send_message(message.channel, content = "Hello World")
+        return True
