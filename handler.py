@@ -4,6 +4,7 @@ from commands.ping import Ping
 from commands.say import Say
 from commands.translate import Translate
 from commands.help import Help
+from commands.helloworld import HelloWorld
 
 
 class CommandHandler:
@@ -15,7 +16,8 @@ class CommandHandler:
         self.commandlist = [
             Ping() ,
             Say() ,
-            Translate(),
+            Translate() ,
+            HelloWorld(),
             News()
         ]
         self.prefix = prefix
