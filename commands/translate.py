@@ -44,7 +44,7 @@ class Translate(Command):
 
         if args[0] == 'detect':
             # We only need two arguments here
-            if not len(args) < 2:
+            if not len(args) >= 2:
                 return False  # Not enough arguments. REMEMBER: Each space counts as argument, thus we cant just say
                 # exactly two arguments
             args.pop(0)  # Pop 'detect' from argument list to only get the arguments for this sub command
@@ -58,6 +58,9 @@ class Translate(Command):
         # Non of the above => translate using language code
         # Get language code and leave only text behind in args
         lang = args.pop(0)
+
+        if len(args) == 0:
+            return False
 
         # Join the arguments to text
         text = " ".join(args)
