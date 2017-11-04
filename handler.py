@@ -1,4 +1,5 @@
 # Import all commands
+from commands.math import Math
 from commands.news import News
 from commands.ping import Ping
 from commands.say import Say
@@ -18,7 +19,8 @@ class CommandHandler:
             Say() ,
             Translate() ,
             HelloWorld(),
-            News()
+            News(),
+            Math()
         ]
         self.prefix = prefix
         self.client = client
