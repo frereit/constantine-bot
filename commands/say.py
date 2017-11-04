@@ -7,7 +7,7 @@ class Say(Command):
         aliases = ["say" , "send_message"]
         shortdescription = "Makes the bot say whatever you want."
         longdescription = "Makes the bot say whatever you want. Used to check if arguments are working."
-        usage = "/".join(self.aliases) + " <Text>"
+        usage = "/".join(aliases) + " <Text>"
         category = Category.CORE
         super().__init__(aliases , shortdescription , longdescription , usage , category)
 

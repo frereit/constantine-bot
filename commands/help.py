@@ -8,7 +8,7 @@ class Help(Command):
         aliases = ["help"]
         shortdescription = "Lists all commands."
         longdescription = "Get info about every command currently available with syntax and a description."
-        usage = "help [command]"
+        usage = "/".join(aliases) + " [command]"
         category = Category.CORE
         self.commandlist = commandlist
         self.prefix = prefix

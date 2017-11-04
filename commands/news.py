@@ -10,7 +10,7 @@ class News(Command):
         aliases = ['news']
         shortdescription = "Get news from various sources. Uses https://newsapi.org/"
         longdescription = "Get the headlines from various news sources from https://newsapi.org/."
-        usage = "news <[source (default:google-news)]|info|available> [source]"
+        usage = "/".join(aliases) + " <[source (default:google-news)]|info|available> [source]"
         category = Category.UNSURE
 
         # Get the key from config.json
