@@ -7,11 +7,11 @@ from commands.command import Command
 
 class News(Command):
     def __init__(self):
-        aliases = ['news']
-        shortdescription = "Get news from various sources. Uses https://newsapi.org/"
-        longdescription = "Get the headlines from various news sources from https://newsapi.org/."
-        usage = "news <[source (default:google-news)]|info|available> [source]"
-        category = Category.UNSURE
+        self.aliases = ['news']
+        self.shortdescription = "Get news from various sources. Uses https://newsapi.org/"
+        self.longdescription = "Get the headlines from various news sources from https://newsapi.org/."
+        self.usage = "news <[source (default:google-news)]|info|available> [source]"
+        self.category = Category.UNSURE
 
         # Get the key from config.json
         with open('config.json') as data_file:
@@ -19,7 +19,7 @@ class News(Command):
         self.newskey = config['newskey']
         self.sources = json.load(
             urllib.request.urlopen('https://newsapi.org/v1/sources?language=en'))  # Get all available news sources
-        super().__init__(aliases , shortdescription , longdescription , usage , category)
+        super().__init__(self.aliases , self.shortdescription , self.longdescription , self.usage , self.category)
 
     def parse_time(self , unparsed):
         try:
