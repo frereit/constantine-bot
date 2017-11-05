@@ -20,7 +20,7 @@ class Translate(Command):
         # Get the key from config.json
         with open('config.json') as data_file:
             config = json.load(data_file)
-        self.yandexkey = config['yandexkey']
+        self.yandexkey = config['yandextranslatekey']
 
         # Create new Translate instance
         self.translate = YandexTranslate(self.yandexkey)
