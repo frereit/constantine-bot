@@ -1,5 +1,8 @@
 # Import all commands
 from commands.crypto import Crypto
+from commands.decrypt import Decrypt
+from commands.encrypt import Encrypt
+from commands.hash import Hash
 from commands.math import Math
 from commands.news import News
 from commands.ping import Ping
@@ -22,7 +25,10 @@ class CommandHandler:
             HelloWorld(),
             News(),
             Crypto(),
-            Math()
+            Math(),
+            Hash(),
+            Encrypt(),
+            Decrypt()
         ]
         self.prefix = prefix
         self.client = client
