@@ -10,6 +10,7 @@ from commands.say import Say
 from commands.translate import Translate
 from commands.help import Help
 from commands.helloworld import HelloWorld
+from commands.wiki import Wiki
 
 
 class CommandHandler:
@@ -26,9 +27,13 @@ class CommandHandler:
             News(),
             Crypto(),
             Math(),
+<<<<<<< HEAD
             Hash(),
             Encrypt(),
             Decrypt()
+=======
+            Wiki()
+>>>>>>> feature-wiki
         ]
         self.prefix = prefix
         self.client = client
