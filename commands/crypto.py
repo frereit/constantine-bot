@@ -1,5 +1,6 @@
 import urllib
 import json
+from discord import Embed
 from category import Category
 from commands.command import Command
 
