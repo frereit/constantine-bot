@@ -7,6 +7,7 @@ from commands.say import Say
 from commands.translate import Translate
 from commands.help import Help
 from commands.helloworld import HelloWorld
+from commands.wiki import Wiki
 
 
 class CommandHandler:
@@ -22,7 +23,8 @@ class CommandHandler:
             HelloWorld(),
             News(),
             Crypto(),
-            Math()
+            Math(),
+            Wiki()
         ]
         self.prefix = prefix
         self.client = client
