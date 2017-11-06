@@ -1,13 +1,10 @@
-from discord import Channel
-from discord.voice_client import StreamPlayer
-
 from category import Category
 from commands.command import Command
 
 
-class Play(Command):
+class Media(Command):
     def __init__(self):
-        aliases = ["play" , "yt" , "youtube"]
+        aliases = ["play" , "playing", "queue"]
         shortdescription = "Plays a YouTube video in a voice channel"
         longdescription = "Plays a YouTube video in a voice channel"
         usage = "/".join(aliases) + " <link>"

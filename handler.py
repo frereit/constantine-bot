@@ -1,9 +1,9 @@
 # Import all commands
 from commands.crypto import Crypto
 from commands.math import Math
+from commands.media import Media
 from commands.news import News
 from commands.ping import Ping
-from commands.play import Play
 from commands.say import Say
 from commands.translate import Translate
 from commands.help import Help
@@ -24,7 +24,7 @@ class CommandHandler:
             News(),
             Crypto(),
             Math(),
-            Play()
+            Media()
         ]
         self.prefix = prefix
         self.client = client
