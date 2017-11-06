@@ -17,9 +17,12 @@ class Play(Command):
         if message.author.voice.voice_channel is None:
             await client.send_message(message.channel, content="You must be in a voice channel!")
             return True
-        voice_channel = message.author.voice.voice_channel
-
-        voice = await client.join_voice_channel(voice_channel)
+        if client.is_voice_connected(message.server):
+            voice = client.voice_client_in(message.server)
+        else:
+            voice_channel = message.author.voice.voice_channel
+            voice = await client.join_voice_channel(voice_channel)
         player = await voice.create_ytdl_player(args[0])
+        player.volume = 0.1
         player.start()
         return True
