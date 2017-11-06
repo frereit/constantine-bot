@@ -27,13 +27,10 @@ class CommandHandler:
             News(),
             Crypto(),
             Math(),
-<<<<<<< HEAD
             Hash(),
             Encrypt(),
-            Decrypt()
-=======
+            Decrypt(),
             Wiki()
->>>>>>> feature-wiki
         ]
         self.prefix = prefix
         self.client = client
