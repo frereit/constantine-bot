@@ -8,6 +8,7 @@ from commands.play import Play
 from commands.queue import Queue
 from commands.queuehelper import QueueHelper
 from commands.say import Say
+from commands.shuffle import Shuffle
 from commands.translate import Translate
 from commands.help import Help
 from commands.helloworld import HelloWorld
@@ -30,7 +31,8 @@ class CommandHandler:
             Math(),
             Play(queuehelper),
             Playing(queuehelper),
-            Queue(queuehelper)
+            Queue(queuehelper),
+            Shuffle(queuehelper)
         ]
         self.prefix = prefix
         self.client = client
