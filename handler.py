@@ -2,8 +2,11 @@
 from commands.crypto import Crypto
 from commands.math import Math
 from commands.news import News
+from commands.nowplaying import Playing
 from commands.ping import Ping
 from commands.play import Play
+from commands.queue import Queue
+from commands.queuehelper import QueueHelper
 from commands.say import Say
 from commands.translate import Translate
 from commands.help import Help
@@ -16,6 +19,7 @@ class CommandHandler:
     # Command Prefix and Client are passed on by constantine.py so that the commands can send messages
     def __init__(self , prefix , client):
         # Used to keep track of all commands available
+        queuehelper = QueueHelper()
         self.commandlist = [
             Ping() ,
             Say() ,
@@ -24,7 +28,9 @@ class CommandHandler:
             News(),
             Crypto(),
             Math(),
-            Play()
+            Play(queuehelper),
+            Playing(queuehelper),
+            Queue(queuehelper)
         ]
         self.prefix = prefix
         self.client = client
