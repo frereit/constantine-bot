@@ -3,7 +3,9 @@ import json
 import urllib
 from category import Category
 from commands.command import Command
+import ssl
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 class News(Command):
     def __init__(self):
