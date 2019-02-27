@@ -1,5 +1,7 @@
 from commands.command import Command
 from category import Category
+
+
 class HelloWorld(Command):
 
     def __init__(self):

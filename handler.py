@@ -1,5 +1,8 @@
 # Import all commands
 from commands.crypto import Crypto
+from commands.decrypt import Decrypt
+from commands.encrypt import Encrypt
+from commands.hash import Hash
 from commands.math import Math
 from commands.news import News
 from commands.nowplaying import Playing
@@ -12,6 +15,7 @@ from commands.shuffle import Shuffle
 from commands.translate import Translate
 from commands.help import Help
 from commands.helloworld import HelloWorld
+from commands.wiki import Wiki
 
 
 class CommandHandler:
@@ -32,7 +36,11 @@ class CommandHandler:
             Play(queuehelper),
             Playing(queuehelper),
             Queue(queuehelper),
-            Shuffle(queuehelper)
+            Shuffle(queuehelper),
+            Hash(),
+            Encrypt(),
+            Decrypt(),
+            Wiki(),
         ]
         self.prefix = prefix
         self.client = client
